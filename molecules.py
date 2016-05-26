@@ -39,8 +39,10 @@ class BioMolecule:
     def mass(self, value):
         self.__mass = value
 
+    #returns a string in which the elements of the list (self.name and type(which is Biomolecule))
+    #are joined by a comma 
     def __repr__(self):
-        return ','.join([self.name, str(type(self))])
+        return ','.join([self.name, str(type(self))]) 
 
     def __str__(self):
         # todo: each class should have something like this
@@ -64,7 +66,7 @@ class Polymer(BioMolecule):
     def __getitem__(self, value):
         return self.sequence[value]
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, key, value): #value=string
         self.sequence[key] = value
 
     @property
@@ -72,11 +74,11 @@ class Polymer(BioMolecule):
         return self.__sequence
 
     @sequence.setter
-    def sequence(self, value):
+    def sequence(self, value): #value=string
         if not isinstance(value, str):
             raise Exception("sequence must be a string")
             # TODO: check for valid nucleotides here
-        self.__sequence = value.upper()
+        self.__sequence = value.upper() #methods returns a copy of the string with UPPERCASED characters
 
 
 class BioMoleculeCount(BioMolecule):

@@ -46,7 +46,7 @@ class Model:
     """
 
     def __init__(self):
-        self.states = {}
+        self.states = {} #dictionary
         self.processes = {}
         self.timestep = 0
         self.mrnas = {}  # all selfs should be initialized in the constructor
@@ -64,13 +64,18 @@ class Model:
         self.results = Output(self)  #
 
     def __initialize_ribosomes(self):
-        self.ribosomes = {'Ribosomes': mol.Ribosome('Ribos', 'Ribosomes', 10)}
+        self.ribosomes = {'Ribosomes': mol.Ribosome('Ribos', 'Ribosomes', 10)} 
+        #dictionary with key:'Ribosome' and value: ribosome from type Ribosome(mid,name,count(so 10 ribosomes))
 
     def __initialize_mRNA(self):
         # I think to have a function for each molecule state generation is more intuitive and less error prone
         for i, mrna in enumerate(self.db.get_states(mol.MRNA)):
             mid, name, sequence = mrna
-            self.mrnas[mid] = mol.MRNA(mid, name, sequence)
+            self.mrnas[mid] = mol.MRNA(mid, name, sequence) 
+            #mrna=[("MRNA_geneid_i", geneid/key, mrnasequence),(...]
+            #for i, item in enumerate(L) <=> for i in range(len(L)):
+                                                #item = L[i]
+            #mrnas is a dictionary ??wie zugriff mit mid, ist doch leeres dictionary??
 
     def __initialize_states(self):
         """

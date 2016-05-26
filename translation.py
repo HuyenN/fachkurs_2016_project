@@ -43,13 +43,13 @@ class Translation(processes.Process):
         pass
 
     def __initiate_ribosomes(self):
-        self.ribosomes = molecules.Ribosome('Ribosomes', 'Ribosome', 1)
+        self.ribosomes = molecules.Ribosome('Ribosomes', 'Ribosome', 1) #mid name count
 
     def update(self, model):
         """
         Update all mrnas and translate proteins.
         """
-        self.ribosomes = model.states[list(self.enzyme_ids)[0]]
+        self.ribosomes = model.states[list(self.enzyme_ids)[0]]#
         for mrna_id in self.substrate_ids:
             prot = None
             mrna = model.states[mrna_id]
